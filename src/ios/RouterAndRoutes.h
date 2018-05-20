@@ -40,39 +40,6 @@
 #define RTA_AUTHOR	0x40	/* sockaddr for author of redirect */
 #define RTA_BRD		0x80	/* for NEWADDR, broadcast or p-p dest addr */
 
-#if !(TARGET_IPHONE_SIMULATOR)
-
-struct rt_metrics {
-    u_int32_t	rmx_locks;	/* Kernel must leave these values alone */
-    u_int32_t	rmx_mtu;	/* MTU for this path */
-    u_int32_t	rmx_hopcount;	/* max hops expected */
-    int32_t		rmx_expire;	/* lifetime for route, e.g. redirect */
-    u_int32_t	rmx_recvpipe;	/* inbound delay-bandwidth product */
-    u_int32_t	rmx_sendpipe;	/* outbound delay-bandwidth product */
-    u_int32_t	rmx_ssthresh;	/* outbound gateway buffer limit */
-    u_int32_t	rmx_rtt;	/* estimated round trip time */
-    u_int32_t	rmx_rttvar;	/* estimated rtt variance */
-    u_int32_t	rmx_pksent;	/* packets sent using this route */
-    u_int32_t	rmx_filler[4];	/* will be used for T/TCP later */
-};
-
-
-struct rt_msghdr2 {
-    u_short	rtm_msglen;		/* to skip over non-understood messages */
-    u_char	rtm_version;		/* future binary compatibility */
-    u_char	rtm_type;		/* message type */
-    u_short	rtm_index;		/* index for associated ifp */
-    int	rtm_flags;		/* flags, incl. kern & message, e.g. DONE */
-    int	rtm_addrs;		/* bitmask identifying sockaddrs in msg */
-    int32_t	rtm_refcnt;		/* reference count */
-    int	rtm_parentflags;	/* flags of the parent route */
-    int	rtm_reserved;		/* reserved field set to 0 */
-    int	rtm_use;		/* from rtentry */
-    u_int32_t rtm_inits;		/* which metrics we are initializing */
-    struct rt_metrics rtm_rmx;	/* metrics themselves */
-};
-
-#endif
 
 @interface Route_Info : NSObject
 {
