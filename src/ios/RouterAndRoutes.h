@@ -15,11 +15,7 @@
 #import <net/if_dl.h>
 #import <sys/sysctl.h>
 
-#if TARGET_IPHONE_SIMULATOR
-#include <net/route.h>
-#else
 #include "route.h"
-#endif
 
 #define RTF_PRCLONING	0x10000		/* protocol requires cloning */
 #define RTF_WASCLONED	0x20000		/* route generated through cloning */
