@@ -17,6 +17,8 @@
 
 #if TARGET_IPHONE_SIMULATOR
 #include <net/route.h>
+#else
+#include "route.h"
 #endif
 
 #define RTF_PRCLONING	0x10000		/* protocol requires cloning */
